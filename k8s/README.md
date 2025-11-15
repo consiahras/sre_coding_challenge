@@ -104,3 +104,58 @@ PASS - /k8s/simple-web-app-hpa.yaml contains a valid HorizontalPodAutoscaler (sr
 Linting k8s/simple-web-app-service.yaml
 PASS - /k8s/simple-web-app-service.yaml contains a valid Service (sre-challenge.simple-web-app-service)
 ```
+
+## Example - Deploying the Application
+
+```
+
+(⎈|colima:sre-challenge)➜  k8s git:(main) kubectl apply -f simple-web-app-deployment.yaml
+kubectl apply -f simple-web-app-hpa.yaml
+kubectl apply -f nginx-deployment.yaml
+kubectl apply -f nginx-configmap.yaml
+kubectl apply -f simple-web-app-service.yaml
+kubectl apply -f nginx-service.yaml
+deployment.apps/simple-web-app created
+horizontalpodautoscaler.autoscaling/simple-web-app-hpa created
+deployment.apps/nginx-loadbalancer created
+configmap/nginx-config created
+service/simple-web-app-service created
+service/nginx-loadbalancer created
+
+(⎈|colima:sre-challenge)➜  app git:(main) k get all
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/nginx-loadbalancer-55b96cd46f-mgwc6   1/1     Running   0          119s
+pod/simple-web-app-6cb69cbb67-6fmhm       1/1     Running   0          119s
+pod/simple-web-app-6cb69cbb67-k9c5f       1/1     Running   0          119s
+
+NAME                             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/nginx-loadbalancer       ClusterIP   10.43.44.195    <none>        80/TCP     118s
+service/simple-web-app-service   ClusterIP   10.43.170.236   <none>        8080/TCP   118s
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-loadbalancer   1/1     1            1           119s
+deployment.apps/simple-web-app       2/2     2            2           119s
+
+NAME                                            DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-loadbalancer-55b96cd46f   1         1         1       119s
+replicaset.apps/simple-web-app-6cb69cbb67       2         2         2       119s
+
+NAME                                                     REFERENCE                   TARGETS              MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/simple-web-app-hpa   Deployment/simple-web-app   cpu: <unknown>/50%   2         4         2          119s
+
+
+
+(⎈|colima:sre-challenge)➜  app git:(main) docker image ls | grep sre_challenge_app
+sre_challenge_app                  v1.0.0                 749139daa8f6   56 seconds ago   210MB
+
+
+
+(⎈|colima:sre-challenge)➜  app git:(main) ✗ kubectl port-forward svc/nginx-loadbalancer 8080:80 -n sre-challenge
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+
+(⎈|colima:sre-challenge)➜  ~ curl http://localhost:8080
+Siachras Konstantinos is the most cool guy!%
+
+```
