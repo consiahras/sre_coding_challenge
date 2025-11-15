@@ -26,12 +26,14 @@ The `Dockerfile` builds a small container image based on the official `python:3.
 
 To build the Docker image locally:
 
+```
 cd app/
 docker build -t sre_challenge_app:v1.0.0 .
 
 docker image ls
 REPOSITORY TAG IMAGE ID CREATED SIZE
 sre_challenge_app v1.0.0 27a6ef76ccb1 2 seconds ago 140MB
+```
 
 ## To run the application container locally:
 
