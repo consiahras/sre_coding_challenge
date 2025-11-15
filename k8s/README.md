@@ -70,6 +70,24 @@ kubectl port-forward svc/nginx-loadbalancer 8080:80 -n sre-challenge
 
 http://localhost:8080
 
-## testing linter
+## From testing linter in .github/workflows/k8s-lint.yaml
 
-Just a simple comment to test functionality of my linter under .github/workflows/k8s-lint.yaml
+```
+df13e863e10c: Pull complete
+f5fd8a61dc1e: Pull complete
+Digest: sha256:6962d8ecbb7839637667f66e6703e6ebaae0c29dfe93a31d9968fba4324c7b8d
+Status: Downloaded newer image for garethr/kubeval:latest
+PASS - /k8s/namespace.yaml contains a valid Namespace (sre-challenge)
+Linting k8s/nginx-configmap.yaml
+PASS - /k8s/nginx-configmap.yaml contains a valid ConfigMap (sre-challenge.nginx-config)
+Linting k8s/nginx-deployment.yaml
+PASS - /k8s/nginx-deployment.yaml contains a valid Deployment (sre-challenge.nginx-loadbalancer)
+Linting k8s/nginx-service.yaml
+PASS - /k8s/nginx-service.yaml contains a valid Service (sre-challenge.nginx-loadbalancer)
+Linting k8s/simple-web-app-deployment.yaml
+PASS - /k8s/simple-web-app-deployment.yaml contains a valid Deployment (sre-challenge.simple-web-app)
+Linting k8s/simple-web-app-hpa.yaml
+PASS - /k8s/simple-web-app-hpa.yaml contains a valid HorizontalPodAutoscaler (sre-challenge.simple-web-app-hpa)
+Linting k8s/simple-web-app-service.yaml
+PASS - /k8s/simple-web-app-service.yaml contains a valid Service (sre-challenge.simple-web-app-service)
+```
