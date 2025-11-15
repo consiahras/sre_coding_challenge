@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: simple-web-app-hpa
@@ -7,13 +7,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: simple-web-app  # Targets the simple-web-app Deployment for autoscaling
+    name: simple-web-app #targets the simple-web-app deployment
   minReplicas: 2
   maxReplicas: 4
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50
+  targetCPUUtilizationPercentage: 50

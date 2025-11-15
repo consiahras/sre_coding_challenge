@@ -62,6 +62,19 @@ kubectl get hpa -n sre-challenge
 kubectl get svc -n sre-challenge
 ```
 
+## Rollback - cleaning
+
+```
+kubectl delete -f simple-web-app-hpa.yaml -n sre-challenge
+kubectl delete -f simple-web-app-deployment.yaml -n sre-challenge
+kubectl delete -f nginx-deployment.yaml -n sre-challenge
+kubectl delete -f nginx-configmap.yaml -n sre-challenge
+kubectl delete -f simple-web-app-service.yaml -n sre-challenge
+kubectl delete -f nginx-service.yaml -n sre-challenge
+
+kubectl delete namespace sre-challenge
+```
+
 ## Port-forward nginx service to your local machine for testing:
 
 kubectl port-forward svc/nginx-loadbalancer 8080:80 -n sre-challenge
