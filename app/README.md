@@ -29,9 +29,25 @@ To build the Docker image locally:
 cd app/
 docker build -t sre_challenge_app:v1.0.0 .
 
+docker image ls
+REPOSITORY TAG IMAGE ID CREATED SIZE
+sre_challenge_app v1.0.0 27a6ef76ccb1 2 seconds ago 140MB
+
 ## To run the application container locally:
 
 docker run -p 8080:8080 sre_challenge_app:v1.0.0
+
+```
+docker run -p 8080:8080 sre_challenge_app:v1.0.0
+ * Serving Flask app 'src/app.py'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://172.17.0.2:8080
+Press CTRL+C to quit
+172.17.0.1 - - [15/Nov/2025 07:41:45] "GET / HTTP/1.1" 200 -            <--- successful request from broswer>
+```
 
 Then navigate to `http://localhost:8080` in your browser or use `curl` to see the "cool response".
 
