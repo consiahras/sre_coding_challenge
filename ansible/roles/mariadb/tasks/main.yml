@@ -1,0 +1,11 @@
+---
+- name: Install MariaDB on RedHat
+  ansible.builtin.yum:
+    name: mariadb-server
+    state: present
+
+- name: Ensure MariaDB is running and enabled
+  ansible.builtin.service:
+    name: mariadb
+    state: started
+    enabled: yes
