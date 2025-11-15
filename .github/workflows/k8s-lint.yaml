@@ -1,0 +1,28 @@
+name: Kubernetes Lint
+
+on:
+  push:
+    paths:
+      - 'k8s/**.yaml'
+      - 'k8s/**.yml'
+  pull_request:
+    paths:
+      - 'k8s/**.yaml'
+      - 'k8s/**.yml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Kubeval (Kubernetes manifest validator)
+      uses: instrumenta/kubeval-action@v2
+      with:
+        version: 'latest'
+
+    - name: Run Kubeval linter on k8s files
+      run: |
+        kubeval k8s/*.yaml
