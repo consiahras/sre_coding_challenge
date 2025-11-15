@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v2
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: simple-web-app-hpa
@@ -7,7 +7,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: simple-web-app # The HPA targets this Deployment for scaling
+    name: simple-web-app  # Targets the simple-web-app Deployment for autoscaling
   minReplicas: 2
   maxReplicas: 4
   metrics:
