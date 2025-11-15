@@ -19,9 +19,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set up Kubeval (Kubernetes manifest validator)
-      uses: instrumenta/kubeval-action@v2
-      with:
-        version: 'latest'
+      uses: instrumenta/kubeval-action@v1
 
     - name: Run Kubeval linter on k8s files
       run: |
