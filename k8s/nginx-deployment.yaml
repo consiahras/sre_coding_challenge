@@ -9,11 +9,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-lb
+      app: nginx-lb  # Selects pods with label app=nginx-lb to manage
   template:
     metadata:
       labels:
-        app: nginx-lb
+        app: nginx-lb # Pods inherit this label so they are matched by selector and Service
     spec:
       containers:
       - name: nginx
@@ -33,4 +33,4 @@ spec:
       volumes:
       - name: nginx-config
         configMap:
-          name: nginx-config
+          name: nginx-config  # Mounts the ConfigMap named nginx-config with proxy

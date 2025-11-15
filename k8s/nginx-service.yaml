@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: nginx-lb
+    app: nginx-lb      # Selects nginx pods (label app=nginx-lb) to route traffic to
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 80           # Exposes service on port 80 internally
+    targetPort: 80     # Forwards requests to port 80 on nginx pods

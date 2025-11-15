@@ -4,16 +4,16 @@ metadata:
   name: simple-web-app
   namespace: sre-challenge
   labels:
-    app: simple-web
+    app: simple-web  # Label assigned to pods created by this Deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: simple-web
+      app: simple-web   # This selector identifies pods managed by this Deployment via label matching
   template:
     metadata:
       labels:
-        app: simple-web
+        app: simple-web # Pods inherit this label, matched by the selector above and Services later on
     spec:
       containers:
       - name: simple-web
