@@ -1,0 +1,17 @@
+# Code owners for the app directory (Python + Dockerfile)
+app/   @consiahras
+
+# Kubernetes manifests ownership
+k8s/   @consiahras
+
+# Terraform infrastructure ownership
+terraform/  @consiahras
+
+# Ansible playbooks and roles
+ansible/  @consiahras
+
+# GitHub Actions workflows ownership
+.github/workflows/  @consiahras
+
+# Top-level project and documentation
+README.md   @consiahras
