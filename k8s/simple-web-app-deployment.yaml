@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: simple-web # Pods inherit this label, matched by the selector above and Services later on
+        app: simple-web # Pods inherit this label, matched by the selector above and Services
     spec:
       containers:
       - name: simple-web
