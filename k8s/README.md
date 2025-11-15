@@ -69,3 +69,7 @@ kubectl port-forward svc/nginx-loadbalancer 8080:80 -n sre-challenge
 ## Open a browser or use curl to access the app via the load balancer:
 
 http://localhost:8080
+
+## testing linter
+
+Just a simple comment to test functionality of my linter under .github/workflows/k8s-lint.yaml
