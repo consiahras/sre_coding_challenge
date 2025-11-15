@@ -43,6 +43,10 @@ jobs:
       run: |
         IMAGE_NAME=sre_challenge_app
         docker build -t $IMAGE_NAME:${{ steps.tag.outputs.image_tag }} app/
+    
+    - name: Confirm Docker image build
+      run: |
+        echo "Built Docker image with tag: ${{ steps.tag.outputs.image_tag }}"
 
     # No push step here to avoid needing credentials in public repo
 
