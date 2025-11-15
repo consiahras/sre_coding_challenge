@@ -18,6 +18,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Run Kubeval linter inside Docker container
+    - name: Run Kubeval linter inside Docker container on each manifest
       run: |
-        docker run --rm -v ${{ github.workspace }}/k8s:/k8s garethr/kubeval /k8s/*.yaml
+        for file in k8s/*.yaml; do
+          echo "Linting $file"
+          docker run --rm -v "${{ github.workspace }}/k8s":/k8s garethr/kubeval "/k8s/$(basename $file)"
+        done
