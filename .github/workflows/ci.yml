@@ -1,4 +1,17 @@
 # GitHub Actions workflow to build Docker image for the app
+#as this run in a agent ran  by free github , i didnt add steps to push the image or connect
+#to any docker registry to avoid needing credentials in a public repo for a sre coding challenge
+#similary that means the image wont be stored in our local pc. 
+
+#optional steps - depends your docker implementation - macos colima
+# colima start
+# docker context use default
+# docker info
+
+
+#Build steps - Requirements 
+# cd app/ 
+# docker build -t sre_challenge_app:v1.0.0 .
 name: CI - Build Docker Image
 
 on:
