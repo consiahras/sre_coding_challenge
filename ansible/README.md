@@ -72,4 +72,4 @@ ansible-playbook -i inventory/hosts playbooks/site.yml
 
 ---
 
-Feel free to extend this setup for monitoring, backups, or other software deployment tasks.
+Feel free to extend this setup for monitoring , or other software deployment tasks.

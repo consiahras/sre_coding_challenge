@@ -4,13 +4,13 @@
   roles:
     - common
 
-- name: Configure Apache on Ubuntu
+- name: Configure Apache on Ubuntu hosts
   hosts: ubuntu
   become: true
   roles:
     - apache
 
-- name: Configure MariaDB on RedHat
+- name: Configure MariaDB on RedHat hosts
   hosts: redhat
   become: true
   roles:
